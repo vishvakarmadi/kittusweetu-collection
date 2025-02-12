@@ -112,3 +112,4 @@ if (mysqli_query($con, $sql)) {
 } else {
    header("location:../mange_product.php?msg=Product   is  not update.");
 }
+?>
