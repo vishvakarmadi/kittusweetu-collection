@@ -38,7 +38,7 @@ if (isset($query)) {
            $_SESSION["passwword"]=$pass;
         //    print_r($_SESSION);
         $_SESSION["login_satus"]=true;
-           header("location:../dashbord.php?msg=Wellcome");
+           header("location:../index.php?msg=Wellcome");
         } else {
             header("location:../index.php?msg=invalide");
             echo "hello";

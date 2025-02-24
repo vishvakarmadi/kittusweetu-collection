@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 // echo "<pre>";
 // print_r($_SESSION);
 ?>
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input class="form-control" name="password" type="password" placeholder="Password">
+                                    <input class="form-control" name="password" type="text" placeholder="Password">
                                     <p class="text-danger">
                                         <?php 
                                         if(isset($_SESSION["Error_password"])){
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>confirm Password</label>
-                                    <input class="form-control name" name="comferm_password" type="password" placeholder="Confirm Password">
+                                    <input class="form-control name" name="comferm_password" type="text" placeholder="Confirm Password">
                                     <p class="text-danger">
                                         <?php 
                                         if(isset($_SESSION["Error_comferm_password"])){

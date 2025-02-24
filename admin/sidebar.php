@@ -51,15 +51,6 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="user_ditail.php" class="nav-link me-2 " data-bs-toggle=""><i class="bi bi-person"></i> User ditails</a>
-                       
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="orders.php" class="nav-link me-2 " data-bs-toggle=""><i class="bi bi-person"></i> orders</a>
-                       
-                    </div>
-
-                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>

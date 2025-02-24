@@ -14,11 +14,12 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu" id="nav1">
                                     <a href="product-list.php" class="dropdown-item">Product</a>
-                                   
+                                    <a href="product-detail.php" class="dropdown-item">Product Detail</a>
                                     <a href="cart.php" class="dropdown-item">Cart</a>
                                     <a href="wishlist.php" class="dropdown-item">Wishlist</a>
                                     <a href="checkout.php" class="dropdown-item">Checkout</a>
                                     <a href="login.php" class="dropdown-item">Login & Register</a>
+                                    <a href="my-account.php" class="dropdown-item">My Account</a>
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact Us</a>

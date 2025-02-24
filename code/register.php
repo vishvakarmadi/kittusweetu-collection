@@ -1,6 +1,6 @@
-<?php
+<?php 
 include "../admin/code/connection.php";
-session_start();
+session_start(); 
 $sataus = false;
 
 // Validate first name
@@ -41,7 +41,7 @@ if (isset($_POST["comferm_password"]) && !empty($_POST["comferm_password"])) {
     if ($password !== $coforme) {
         $_SESSION['Error_comferm_password'] = 'Passwords do not match.';
         $sataus = true;
-    } else {
+    }else{
         $coforme = $_POST["comferm_password"];
     }
 } else {
@@ -65,27 +65,36 @@ if ($sataus == true) {
     header("location:../Resitaion.php?msg=Please fill all inputs");
     exit();
 }
+
+// Check if email already exists
+$email_check_query = "SELECT * FROM `user` WHERE `email` = '$email'";
+$email_check_result = mysqli_query($con, $email_check_query);
+
+if (mysqli_num_rows($email_check_result) > 0) {
+    $_SESSION['Error_email'] = 'Email already exists. Please use a different email.';
+    header("location:../Resitaion.php?msg=Email already exists");
+    exit();
+}
+
 // Check if mobile number already exists
-$check_query = "SELECT * FROM `user` WHERE `mobile` = '$mo_no' OR `email`='$email'";
-$check_result = mysqli_query($con, $check_query);
+$mobile_check_query = "SELECT * FROM `user` WHERE `mobile` = '$mo_no'";
+$mobile_check_result = mysqli_query($con, $mobile_check_query);
 
-if (mysqli_num_rows($check_result) == 0) {
-    // If email and mobile are unique, insert into database
-    $sql = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `mobile`, `password`) 
-VALUES ('$first_name','$last_name','$email','$mo_no','$coforme')";
-    $query = mysqli_query($con, $sql);
+if (mysqli_num_rows($mobile_check_result) > 0) {
+    $_SESSION['Error_mo_no'] = 'Mobile number already exists. Please use a different number.';
+    header("location:../Resitaion.php?msg=Mobile number already exists");
+    exit();
+}
 
-    $_SESSION['user_id'] = mysqli_insert_id($con);
-    $_SESSION['name'] = $first_name . ' ' . $last_name;
+// If email and mobile are unique, insert into database
+$sql = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `mobile`, `password`) 
+VALUES ('$first_name','$last_name','$email','$mo_no','$comferm_password')";
+$query = mysqli_query($con, $sql);
 
-
-    if ($query) {
-        header("location:../index.php?msg1=Registration successful.");
-    } else {
-        $_SESSION['Error_query'] = 'Database error: ' . mysqli_error($con);
-        header("location:../index.php?msg=Registration not successful.");
-    }
+if ($query) {
+    header("location:../Resitaion.php?msg1=Registration successful.");
 } else {
-    header("location:../Resitaion.php?msg1= Uswe allredy resitered.");
+    $_SESSION['Error_query'] = 'Database error: ' . mysqli_error($con);
+    header("location:../Resitaion.php?msg=Registration not successful.");
 }
 ?>

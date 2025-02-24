@@ -75,7 +75,24 @@ else{
 $_SESSION["Error_Discount"]="Discount is riquired.";
 $status=true;
 }
-
+if($Selling_Price<$mrp || $Selling_Price==$mrp){
+   $_SESSION["Error_mrp_pirce"]=" ";
+}
+else{
+   $_SESSION["Error_mrp_pirce"]="Plese enter selling price because Price is  Greter than Mrp.";
+   $status=true;
+   }
+   $res=($mrp-$Selling_Price)*100/$mrp;
+   $res1=number_format($res, 2);
+   
+   if($Discount==$res1){
+      $_SESSION["Error_prsent"] = " ";
+    
+   }
+   else{
+      $_SESSION["Error_prsent"] = "Discount  is wrong fill %"; 
+      $status=true;
+   }
 // status
 if(isset($_POST["status"]) &&!empty($_POST['status'])){
    $status1=$_POST["status"]; 

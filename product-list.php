@@ -7,6 +7,8 @@
 <!-- Top Header Start -->
 <?php include "heder.php" ?>
 <!-- Top Header End -->
+
+
 <!-- navbar Start -->
 <?php include "navbar.php" ?>
 <!-- navbar End -->
@@ -44,17 +46,14 @@
                     <!-- product Start -->
 
                     <?php
-                    
                     if(isset($_GET["category_id"]) && !empty($_GET["category_id"])){
                         $categoty_id=$_GET["category_id"];
                         $sql="SELECT * FROM `product` where category_id=$categoty_id ORDER BY id  ASC";
                       }
-                      elseif(isset($_GET['brand_id']) && !empty($_GET['brand_id'])){
-                        $brandid=$_GET['brand_id'];
-                        $sql="SELECT * FROM `product` where brand_id=$brandid ORDER BY id  ASC";
-                    }
-                     
-                    elseif(isset($_GET["price"])){
+                      else{
+                          $sql="SELECT * FROM `product` ORDER BY id  ASC";
+                      }
+                    if(isset($_GET["price"])){
                         if($_GET["price"]=="low"){
                             $sql="SELECT * FROM `product` ORDER BY selling_price ASC";
                         }
@@ -62,8 +61,10 @@
                             $sql="SELECT * FROM `product` ORDER BY selling_price DESC";
                         }
                     }
-                    
-                    elseif(isset($_GET["category_id"]) && !empty($_GET["category_id"])){
+                    else{
+                        $sql="SELECT * FROM `product` ORDER BY id  ASC";
+                    }
+                    if(isset($_GET["category_id"]) && !empty($_GET["category_id"])){
                       $categoty_id=$_GET["category_id"];
                       $sql="SELECT * FROM `product` where category_id=$categoty_id ORDER BY id  ASC";
                     }
@@ -83,8 +84,9 @@
                                         <img src="admin/uplode/product/<?= $product1["product_img"] ?>" alt="Product Image">
                                     </a>
                                     <div class="product-action">
-                                    <a href="code/add-card.php?id=<?=$product1['id']?>"><i class="fa fa-cart-plus"></i></a>
-                               
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="#"><i class="fa fa-search"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-content">

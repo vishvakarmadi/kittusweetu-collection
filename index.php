@@ -7,7 +7,6 @@
 <?php
 $qurey = mysqli_query($con, "SELECT * FROM `slider` ORDER BY id DESC;");
 $qurey1 = mysqli_query($con, "SELECT * FROM `category` ORDER BY id DESC limit 4;");
-// print_r($_SESSION);
 ?>
 
 <body>
@@ -160,7 +159,7 @@ $qurey1 = mysqli_query($con, "SELECT * FROM `category` ORDER BY id DESC limit 4;
                                     <img src="admin/uplode/product/<?= $product["product_img"] ?>" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                     <a href="code/add-card.php?id=<?=$product["id"]?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -230,7 +229,7 @@ $qurey1 = mysqli_query($con, "SELECT * FROM `category` ORDER BY id DESC limit 4;
                                     <img src="admin/uplode/product/<?= $product1["product_img"] ?>" alt="Product Image">
                                 </a>
                                 <div class="product-action">
-                                     <a href="code/add-card.php?id=<?=$product1["id"]?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>

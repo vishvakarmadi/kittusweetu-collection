@@ -74,7 +74,7 @@ $data = mysqli_fetch_array($query, MYSQLI_ASSOC);
                                     </div>
                                 </div>
                                 <div class="action">
-                                <a href="<?php echo "code/add-card.php?id=".$data['id']; ?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="#"><i class="fa fa-search"></i></a>
                                 </div>
@@ -179,7 +179,7 @@ $data = mysqli_fetch_array($query, MYSQLI_ASSOC);
                                             <img src="admin/uplode/product/<?= $product1["product_img"] ?>" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                        <a href="<?php echo "code/add-card.php?id=".$data['id']; ?>"><i class="fa fa-cart-plus"></i></a>
+                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
                                             <a href="#"><i class="fa fa-heart"></i></a>
                                             <a href="#"><i class="fa fa-search"></i></a>
                                         </div>
@@ -210,18 +210,11 @@ $data = mysqli_fetch_array($query, MYSQLI_ASSOC);
                         <h2 class="title">Category</h2>
                         <ul>
                             <?php 
-                            
                             $caregory_query=mysqli_query($con,"SELECT * FROM `category` ORDER BY id DESC");
                             while($categoty=mysqli_fetch_array($caregory_query,MYSQLI_ASSOC)){
                             // print_r($categoty);
                             ?>
-                            <li><a href="product-list.php?category_id=<?php echo $categoty["id"] ?>"><?php echo $categoty["category_name"] ?></a><span>(<?php 
-                            $catr_id=$categoty["id"];
-                            
-                            $caregory_query1=mysqli_query($con,"SELECT COUNT($catr_id) FROM `product` WHERE `category_id`=$catr_id");
-                            $cdata=mysqli_fetch_array($caregory_query1);
-                            echo $cdata[0];
-                            ?>)</span></li>
+                            <li><a href="product-list.php?category_id=<?php echo $categoty["id"] ?>"><?php echo $categoty["category_name"] ?></a><span>(83)</span></li>
                             <?php 
                             }
                             ?>
@@ -237,25 +230,14 @@ $data = mysqli_fetch_array($query, MYSQLI_ASSOC);
                     </div>
 
                     <div class="sidebar-widget brands">
-                    <h2 class="title">Our Brands</h2>
+                        <h2 class="title">Our Brands</h2>
                         <ul>
-                            <?php 
-                            
-                            $brand_query=mysqli_query($con,"SELECT * FROM `brand` ORDER BY id DESC");
-                            while($brand=mysqli_fetch_array($brand_query,MYSQLI_ASSOC)){
-                            // print_r($categoty);
-                            ?>
-                            <li><a href="product-list.php?brand_id=<?php echo $brand["id"] ?>"><?php echo $brand["name"] ?></a><span>(<?php 
-                            $catr_id=$brand["id"];
-                            
-                            $caregory_query1=mysqli_query($con,"SELECT COUNT($catr_id) FROM `product` WHERE `brand_id`=$catr_id");
-                            $cdata=mysqli_fetch_array($caregory_query1);
-                            echo $cdata[0];
-                            ?>)</span></li>
-                            <?php 
-                            }
-                            ?>
-                           
+                            <li><a href="#">Nulla </a><span>(45)</span></li>
+                            <li><a href="#">Curabitur </a><span>(34)</span></li>
+                            <li><a href="#">Nunc </a><span>(67)</span></li>
+                            <li><a href="#">Ullamcorper</a><span>(74)</span></li>
+                            <li><a href="#">Fusce </a><span>(89)</span></li>
+                            <li><a href="#">Sagittis</a><span>(28)</span></li>
                         </ul>
                     </div>
 

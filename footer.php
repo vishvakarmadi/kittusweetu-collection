@@ -18,6 +18,7 @@
                                 <li><a href="cart.php">Cart</a></li>
                                 <li><a href="checkout.php">Checkout</a></li>
                                 <li><a href="login.php">Login & Register</a></li>
+                                <li><a href="my-account.php">My Account</a></li>
                             </ul>
                         </div>
                     </div>
@@ -29,7 +30,7 @@
                                 <li><a href="cart.php">Cart</a></li>
                                 <li><a href="checkout.php">Checkout</a></li>
                                 <li><a href="login.php">Login & Register</a></li>
-                                
+                                <li><a href="my-account.php">My Account</a></li>
                                 <li><a href="wishlist.php">Wishlist</a></li>
                             </ul>
                         </div>
