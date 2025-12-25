@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 // echo "<pre>";
 // print_r($_SESSION);
@@ -27,44 +27,44 @@ session_start();
 
     <!-- main contant Start  -->
 
-     <!-- Login Start -->
-     <div class="login">
-            <div class="container">
-                <div class="section-header">
-                    <h3>User Registration</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra at massa sit amet ultricies. Nullam consequat, mauris non interdum cursus
-                    </p>
-                </div>
-                <div class="row"> 
+    <!-- Login Start -->
+    <div class="login">
+        <div class="container">
+            <div class="section-header">
+                <h3>User Registration</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra at massa sit amet ultricies. Nullam consequat, mauris non interdum cursus
+                </p>
+            </div>
+            <div class="row">
 
-                    <div class="col-md-12">
+                <div class="col-md-12">
                     <h2 style="color: red;">
-                                    <?php 
-                                    if(isset($_GET["msg"])){
-                                        echo $_GET["msg"];
-                                    }
-                                    ?>
-                                </h2>    
+                        <?php
+                        if (isset($_GET["msg"])) {
+                            echo $_GET["msg"];
+                        }
+                        ?>
+                    </h2>
                     <h2 style="color: green;">
-                                    <?php 
-                                    if(isset($_GET["msg1"])){
-                                        echo $_GET["msg1"];
-                                    }
-                                    ?>
-                                </h2>    
-                        <div class="register-form">
-                           
+                        <?php
+                        if (isset($_GET["msg1"])) {
+                            echo $_GET["msg1"];
+                        }
+                        ?>
+                    </h2>
+                    <div class="register-form">
+
                         <form action="code/register.php" method="post">
                             <div class="row">
-                                
+
                                 <div class="col-md-6">
                                     <label>First Name</label>
                                     <input class="form-control" name="first_name" type="text" placeholder="First Name">
                                     <p class="text-danger">
-                                        <?php 
-                                        if(isset($_SESSION["Error_first_name"])){
-                                            echo $_SESSION["Error_first_name"];  
+                                        <?php
+                                        if (isset($_SESSION["Error_first_name"])) {
+                                            echo $_SESSION["Error_first_name"];
                                         }
                                         ?>
                                     </p>
@@ -73,9 +73,9 @@ session_start();
                                     <label>Last Name"</label>
                                     <input class="form-control" name="last_name" type="text" placeholder="Last Name">
                                     <p class="text-danger">
-                                        <?php 
-                                        if(isset($_SESSION["Error_last_name"])){
-                                            echo $_SESSION["Error_last_name"];  
+                                        <?php
+                                        if (isset($_SESSION["Error_last_name"])) {
+                                            echo $_SESSION["Error_last_name"];
                                         }
                                         ?>
                                     </p>
@@ -84,9 +84,9 @@ session_start();
                                     <label>E-mail</label>
                                     <input class="form-control" name="email" type="text" placeholder="E-mail">
                                     <p class="text-danger">
-                                        <?php 
-                                        if(isset($_SESSION["Error_email"])){
-                                            echo $_SESSION["Error_email"];  
+                                        <?php
+                                        if (isset($_SESSION["Error_email"])) {
+                                            echo $_SESSION["Error_email"];
                                         }
                                         ?>
                                     </p>
@@ -95,9 +95,9 @@ session_start();
                                     <label>Mobile No</label>
                                     <input class="form-control name" name="mo_no" type="text" placeholder="Mobile No">
                                     <p class="text-danger">
-                                        <?php 
-                                        if(isset($_SESSION["Error_mo_no"])){
-                                            echo $_SESSION["Error_mo_no"];  
+                                        <?php
+                                        if (isset($_SESSION["Error_mo_no"])) {
+                                            echo $_SESSION["Error_mo_no"];
                                         }
                                         ?>
                                     </p>
@@ -106,9 +106,9 @@ session_start();
                                     <label>Password</label>
                                     <input class="form-control" name="password" type="text" placeholder="Password">
                                     <p class="text-danger">
-                                        <?php 
-                                        if(isset($_SESSION["Error_password"])){
-                                            echo $_SESSION["Error_password"];  
+                                        <?php
+                                        if (isset($_SESSION["Error_password"])) {
+                                            echo $_SESSION["Error_password"];
                                         }
                                         ?>
                                     </p>
@@ -117,9 +117,24 @@ session_start();
                                     <label>confirm Password</label>
                                     <input class="form-control name" name="comferm_password" type="text" placeholder="Confirm Password">
                                     <p class="text-danger">
-                                        <?php 
-                                        if(isset($_SESSION["Error_comferm_password"])){
-                                            echo $_SESSION["Error_comferm_password"];  
+                                        <?php
+                                        if (isset($_SESSION["Error_comferm_password"])) {
+                                            echo $_SESSION["Error_comferm_password"];
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>User Role</label>
+                                    <select class="form-control" name="role">
+                                        <option value="customer">Customer</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="moderator">Moderator</option>
+                                    </select>
+                                    <p class="text-danger">
+                                        <?php
+                                        if (isset($_SESSION["Error_role"])) {
+                                            echo $_SESSION["Error_role"];
                                         }
                                         ?>
                                     </p>
@@ -127,15 +142,15 @@ session_start();
                                 <div class="col-md-12">
                                     <button class="btn">Submit</button>
                                 </div>
-                                
+
                             </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Login End -->
+    </div>
+    <!-- Login End -->
     <!-- main contant End  -->
 
     <!-- Footer Start -->
@@ -152,7 +167,7 @@ session_start();
 </body>
 
 </html>
-<?php 
+<?php
 unset($_SESSION['Error_first_name']);
 unset($_SESSION['Error_last_name']);
 unset($_SESSION['Error_email']);

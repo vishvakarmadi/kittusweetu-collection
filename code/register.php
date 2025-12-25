@@ -60,6 +60,13 @@ if (isset($_POST["mo_no"]) && !empty($_POST["mo_no"])) {
     $sataus = true;
 }
 
+// Validate role
+if (isset($_POST["role"]) && !empty($_POST["role"])) {
+    $role = $_POST["role"];
+} else {
+    $role = 'customer'; // default role
+}
+
 // If any validation failed, redirect back
 if ($sataus == true) {
     header("location:../Resitaion.php?msg=Please fill all inputs");
@@ -87,8 +94,8 @@ if (mysqli_num_rows($mobile_check_result) > 0) {
 }
 
 // If email and mobile are unique, insert into database
-$sql = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `mobile`, `password`) 
-VALUES ('$first_name','$last_name','$email','$mo_no','$comferm_password')";
+$sql = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `mobile`, `password`, `role`) 
+VALUES ('$first_name','$last_name','$email','$mo_no','$comferm_password','$role')";
 $query = mysqli_query($con, $sql);
 
 if ($query) {

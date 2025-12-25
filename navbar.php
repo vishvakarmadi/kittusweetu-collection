@@ -1,4 +1,5 @@
-<div class="header">
+<?php session_start(); ?>
+        <div class="header">
             <div class="container">
                 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
                     <a href="#" class="navbar-brand">MENU</a>
@@ -18,12 +19,35 @@
                                     <a href="cart.php" class="dropdown-item">Cart</a>
                                     <a href="wishlist.php" class="dropdown-item">Wishlist</a>
                                     <a href="checkout.php" class="dropdown-item">Checkout</a>
-                                    <a href="login.php" class="dropdown-item">Login & Register</a>
-                                    <a href="my-account.php" class="dropdown-item">My Account</a>
+                                    <?php 
+                                    if (isset($_SESSION['user_id'])) {
+                                        // User is logged in
+                                        echo '<a href="my-account.php" class="dropdown-item">My Account</a>';
+                                        echo '<a href="code/logout.php" class="dropdown-item">Logout</a>';
+                                    } else {
+                                        // User is not logged in
+                                        echo '<a href="login.php" class="dropdown-item">Login & Register</a>';
+                                        echo '<a href="Resitaion.php" class="dropdown-item">Register</a>';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact Us</a>
                         </div>
+                        <?php 
+                        if (isset($_SESSION['user_id'])) {
+                            // Show user greeting when logged in
+                            echo '<div class="navbar-nav ml-auto">
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Welcome, ' . $_SESSION['user_name'] . '</a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="my-account.php" class="dropdown-item">My Account</a>
+                                        <a href="code/logout.php" class="dropdown-item">Logout</a>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                        ?>
                     </div>
                 </nav>
             </div>

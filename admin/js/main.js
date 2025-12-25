@@ -31,6 +31,28 @@
         $('.sidebar, .content').toggleClass("open");
         return false;
     });
+    
+    
+    // Sidebar Navigation
+    $('.sidebar .nav-link.dropdown-toggle').click(function (e) {
+        e.preventDefault();
+        
+        // Close all other dropdowns in the sidebar
+        $('.sidebar .dropdown').not($(this).parent()).removeClass('show');
+        $('.sidebar .dropdown-menu').not($(this).next('.dropdown-menu')).removeClass('show');
+        
+        // Toggle the clicked dropdown
+        $(this).parent().toggleClass('show');
+        $(this).next('.dropdown-menu').toggleClass('show');
+    });
+    
+    // Close dropdowns when clicking elsewhere
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.sidebar').length) {
+            $('.sidebar .dropdown').removeClass('show');
+            $('.sidebar .dropdown-menu').removeClass('show');
+        }
+    });
 
 
     // Progress Bar

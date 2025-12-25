@@ -1,6 +1,6 @@
  <!-- Navbar Start -->
  <nav class="navbar navbar-expand bg-dark navbar-dark sticky-top px-4 py-0 text-white" style="border-bottom:3px solid white;">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="dashbord.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-white mb-0"><i class="fa fa-user-edit"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -82,7 +82,7 @@
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="change-password.php" class="dropdown-item">Change password</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="index.php"class="dropdown-item">Log Out</a>
+                            <a href="code/logout.php"class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>

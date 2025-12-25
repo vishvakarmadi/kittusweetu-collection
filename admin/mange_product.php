@@ -29,7 +29,12 @@ $query = mysqli_query($con, $sql);
             <!-- new conttent add satrt  -->
             <div class="col-12">
                 <div class="bg-white rounded h-100 p-4">
-                    <h3 style="color: black;" class="mb-4">Mange Product</h3>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 style="color: black;">Manage Product</h3>
+                        <a href="add_product.php" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Add Product
+                        </a>
+                    </div>
                     <h5 style="color:green;">
                         <?php
                         if (isset($_GET["msg"])) {

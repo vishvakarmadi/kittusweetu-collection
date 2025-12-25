@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include("connection.php");
+include("./connection.php");
 $email=$_SESSION["email"];
 $sql1="SELECT * FROM `admin` WHERE `email`='$email'";
 $res=mysqli_query($con,$sql1);
@@ -46,12 +46,11 @@ if($pass==$old_pass){
         }
     }
     else{
-        header("location:../change-password.php?pass=Comfirm password is not matched");   
+        header("location:../change-password.php?pass=Comfirm password is not matched");
     }
 }
 else{
     header("location:../change-password.php?old=Old password is wrong");
     
 }
-
 ?>
