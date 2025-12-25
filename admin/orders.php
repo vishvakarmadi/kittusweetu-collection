@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "check_login.php";
 
 include "code/connection.php";

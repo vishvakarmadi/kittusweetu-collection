@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "check_login.php";
 include "code/connection.php";
 $sql = "SELECT product.*,sub_category.sub_name,category.category_name,brand.name as brand_name FROM product INNER JOIN category ON product.category_id = category.id INNER JOIN sub_category ON product.sub_category_id = sub_category.id INNER JOIN brand ON product.brand_id = brand.id ORDER BY `id` DESC";

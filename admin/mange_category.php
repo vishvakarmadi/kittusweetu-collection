@@ -1,7 +1,5 @@
 <?php
-session_start();
 include "check_login.php";
-
 include "code/connection.php";
 $sql = "SELECT * FROM `category` ORDER BY `id` DESC ";
 $query = mysqli_query($con, $sql);

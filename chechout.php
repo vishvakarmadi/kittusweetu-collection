@@ -217,12 +217,7 @@ $query1 = mysqli_query($con, $sql1);
                                 <div class="payment-method">
                                     <div class="custom-control custom-radio">
                                         <input type="radio" class="custom-control-input" value="cash_on_delevery" id="payment-1" name="payment">
-                                        <label class="custom-control-label" for="payment-1">Cash On delevery</label>
-                                        <p style="color:red;"><?php 
-                                    if(isset($_SESSION['Error_payment'])){
-                                        echo $_SESSION['Error_payment'];
-                                    }
-                                    ?></p>
+                                        <label class="custom-control-label" for="payment-1">Cash On Delivery</label>
                                         <p style="color:red;"><?php 
                                     if(isset($_SESSION['Error_payment'])){
                                         echo $_SESSION['Error_payment'];
@@ -231,11 +226,27 @@ $query1 = mysqli_query($con, $sql1);
                                     </div>
                                     <div class="payment-content" id="payment-1-show" >
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
+                                            Pay cash when your order is delivered.
                                         </p>
                                     </div>
                                 </div>
-                              
+                                
+                                <div class="payment-method">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="icici" id="payment-2" name="payment">
+                                        <label class="custom-control-label" for="payment-2">ICICI Bank Payment Gateway</label>
+                                        <p style="color:red;"><?php 
+                                    if(isset($_SESSION['Error_payment'])){
+                                        echo $_SESSION['Error_payment'];
+                                    }
+                                    ?></p>
+                                    </div>
+                                    <div class="payment-content" id="payment-2-show" >
+                                        <p>
+                                            Secure payment through ICICI Bank Payment Gateway.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="checkout-btn">
                                 <button>Place Order</button>

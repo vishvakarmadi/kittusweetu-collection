@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "check_login.php";
 
 include "code/connection.php";
@@ -16,6 +15,7 @@ $query = mysqli_query($con, $sql);
     include "hedder_link.php";
     ?>
 </head>
+
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -51,7 +51,7 @@ $query = mysqli_query($con, $sql);
                             <thead>
                                 <tr class="text-center">
                                     <th scope="col">Sr</th>
-                                    <th scope="col">Category  </th>
+                                    <th scope="col">Category </th>
                                     <th scope="col">Sub-category Name</th>
                                     <th scope="col">Image</th>
                                     <th scope="col">Status</th>
@@ -62,26 +62,26 @@ $query = mysqli_query($con, $sql);
                                 </tr>
                             </thead>
                             <tbody>
-                               
+
                                 <?php
-                                $i=0;
-                                 while ($data = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-                                    
+                                $i = 0;
+                                while ($data = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+
                                 ?>
-                                    <tr class="text-center text-dark" >
-                                        
-                                       
+                                    <tr class="text-center text-dark">
+
+
                                         <th scope="row"><?php echo ++$i ?></th>
                                         <td><?php echo $data["category_name"] ?></th>
 
-                                        <td><?php echo $data["sub_name"] ?></th>                                        <td><img src="uplode/sub_category/<?php echo $data["sub_image"] ?>" height="70px" width="200px" alt=""></th>
-                                      
+                                        <td><?php echo $data["sub_name"] ?></th>
+                                        <td><img src="uplode/sub_category/<?php echo $data["sub_image"] ?>" height="70px" width="200px" alt=""></th>
+
                                         <td>
                                             <?php if ($data["status"] == 1) {
                                                 echo "Active";
-                                            }
-                                            else{
-                                                echo "Inactive"; 
+                                            } else {
+                                                echo "Inactive";
                                             }
                                             ?>
                                             </th>
@@ -128,11 +128,12 @@ $query = mysqli_query($con, $sql);
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href="code/Sub-category-delete.php?id="+id;
+                window.location.href = "code/Sub-category-delete.php?id=" + id;
             }
         });
 
     }
+
     function subedit(id) {
 
         Swal.fire({
@@ -145,12 +146,12 @@ $query = mysqli_query($con, $sql);
             confirmButtonText: "Yes, Edit it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href="Edit-Sub-category.php?id="+id;
+                window.location.href = "Edit-Sub-category.php?id=" + id;
             }
         });
 
     }
 </script>
-<?php include "js/datatable.php"?>
+<?php include "js/datatable.php" ?>
 
 </html>

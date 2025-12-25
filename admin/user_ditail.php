@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "check_login.php";
 include "code/connection.php";
 $sql = "SELECT * FROM `user`  ORDER BY `id` DESC";
@@ -47,7 +46,6 @@ $query = mysqli_query($con, $sql);
                                     <th scope="col"> Email </th>
                                     <th scope="col"> Mobile Number </th>
                                     <th scope="col"> Password </th>
-                                    
                                     <th scope="col">Created Time</th>
                                     <th scope="col">Updated Time</th>
                                     <th scope="col">Edit</th>

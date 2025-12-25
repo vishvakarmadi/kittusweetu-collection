@@ -65,7 +65,7 @@
                                         <label>Password</label>
                                         <input class="form-control form-control-lg" type="password" placeholder="Enter your password" name="password" required>
                                         <div class="mt-1">
-                                            <a href="#" class="text-primary small">Forgot Password?</a>
+                                            <a href="forgot-password.php" class="text-primary small">Forgot Password?</a>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">

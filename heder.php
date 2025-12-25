@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php if (session_status() == PHP_SESSION_NONE) { session_start(); } ?>
 <div class="top-header">
     <div class="container">
         <div class="row align-items-center">

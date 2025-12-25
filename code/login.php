@@ -28,13 +28,30 @@ if($sataus==true){
 }
 
 // Check user credentials in the database
-$sql = "SELECT * FROM `user` WHERE `email` = '$email'";
-$result = mysqli_query($con, $sql);
+$sql = "SELECT * FROM `user` WHERE `email` = ?";
+$stmt = mysqli_prepare($con, $sql);
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
 if(mysqli_num_rows($result) > 0) {
     $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
     
-    if($data['password'] == $password) {
+    // Check if password is hashed (modern format) or plain text (legacy)
+    // Modern passwords start with $2y$, $2x$, or $2a$ (bcrypt format)
+    $is_hashed = (substr($data['password'], 0, 4) === '$2y$' || 
+                  substr($data['password'], 0, 4) === '$2x$' || 
+                  substr($data['password'], 0, 4) === '$2a$');
+    
+    if($is_hashed) {
+        // Use password_verify for hashed passwords
+        $login_success = password_verify($password, $data['password']);
+    } else {
+        // Compare plain text for legacy passwords
+        $login_success = ($password === $data['password']);
+    }
+    
+    if($login_success) {
         // Login successful
         $_SESSION['user_id'] = $data['id'];
         $_SESSION['user_email'] = $data['email'];
@@ -43,13 +60,16 @@ if(mysqli_num_rows($result) > 0) {
         
         // Redirect to homepage or previous page
         header("location:../index.php");
+        exit();
     } else {
         // Invalid password
         header("location:../login.php?error=invalid");
+        exit();
     }
 } else {
     // User not found
     header("location:../login.php?error=notfound");
+    exit();
 }
 
 mysqli_close($con);

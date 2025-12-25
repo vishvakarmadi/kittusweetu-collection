@@ -29,20 +29,43 @@ if ($status == true) {
     header("location:../index.php?msg=invalide");
     exit();
 }
-$query = mysqli_query($con, "SELECT * FROM `admin` Where `email`='$email'");
-if (isset($query)) {
-    if (mysqli_num_rows($query) > 0) {
-        $data = mysqli_fetch_array($query, MYSQLI_ASSOC);
-        if ($email == $data['email'] && $pass == $data["password"]) {
+
+// Use prepared statement to prevent SQL injection
+$stmt = mysqli_prepare($con, "SELECT * FROM `admin` WHERE `email` = ?");
+mysqli_stmt_bind_param($stmt, "s", $email);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if (isset($result)) {
+    if (mysqli_num_rows($result) > 0) {
+        $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        
+        // Check if password is hashed (modern format) or plain text (legacy)
+        // Modern passwords start with $2y$, $2x$, or $2a$ (bcrypt format)
+        $is_hashed = (substr($data['password'], 0, 4) === '$2y$' || 
+                      substr($data['password'], 0, 4) === '$2x$' || 
+                      substr($data['password'], 0, 4) === '$2a$');
+        
+        if($is_hashed) {
+            // Use password_verify for hashed passwords
+            $login_success = password_verify($pass, $data["password"]);
+        } else {
+            // Compare plain text for legacy passwords
+            $login_success = ($pass === $data["password"]);
+        }
+        
+        if ($login_success) {
            $_SESSION["email"]=$email;
            $_SESSION["passwword"]=$pass;
+           $_SESSION['admin_role'] = $data['role']; // Store admin role
         //    print_r($_SESSION);
         $_SESSION["login_satus"]=true;
            header("location:../dashbord.php?msg=Wellcome");
         } else {
             header("location:../index.php?msg=invalide");
-            echo "hello";
         }
+    } else {
+    header("location:../index.php?msg=mail is vlid");
     }
 } else {
     header("location:../index.php?msg=mail is vlid");

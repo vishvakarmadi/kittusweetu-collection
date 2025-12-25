@@ -93,10 +93,15 @@ if (mysqli_num_rows($mobile_check_result) > 0) {
     exit();
 }
 
+// Hash the password before storing
+$hashed_password = password_hash($comferm_password, PASSWORD_DEFAULT);
+
 // If email and mobile are unique, insert into database
 $sql = "INSERT INTO `user`(`first_name`, `last_name`, `email`, `mobile`, `password`, `role`) 
-VALUES ('$first_name','$last_name','$email','$mo_no','$comferm_password','$role')";
-$query = mysqli_query($con, $sql);
+VALUES (?, ?, ?, ?, ?, ?)";
+$stmt = mysqli_prepare($con, $sql);
+mysqli_stmt_bind_param($stmt, "ssssss", $first_name, $last_name, $email, $mo_no, $hashed_password, $role);
+$query = mysqli_stmt_execute($stmt);
 
 if ($query) {
     header("location:../Resitaion.php?msg1=Registration successful.");

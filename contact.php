@@ -1,3 +1,14 @@
+<?php
+// Display success or error messages
+$message = '';
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == 'success') {
+        $message = '<div class="alert alert-success text-center">Thank you for contacting us. We will get back to you soon!</div>';
+    } elseif ($_GET['msg'] == 'error') {
+        $message = '<div class="alert alert-danger text-center">There was an error sending your message. Please try again.</div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,25 +34,26 @@
     <!-- Contact Start -->
     <div class="contact">
             <div class="container">
+                <?php echo $message; ?>
                 <div class="row align-items-center">
                     <div class="col-md-7">
                         <div class="form">
-                            <form action="" method="">
+                            <form action="code/contact-us.php" method="POST">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="text" class="form-control" placeholder="Your Name" />
+                                        <input type="text" class="form-control" name="name" placeholder="Your Name" required />
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="email" class="form-control" placeholder="Your Email" />
+                                        <input type="email" class="form-control" name="email" placeholder="Your Email" required />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subject" />
+                                    <input type="text" class="form-control" name="subject" placeholder="Subject" required />
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                                 </div>
-                                <div><button type="submit">Send Message</button></div>
+                                <div><button type="submit" class="btn btn-primary w-100">Send Message</button></div>
                             </form>
                         </div>
                     </div>
@@ -50,7 +62,7 @@
                             <div class="section-header">
                                 <h3>Get in Touch</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus.
+                                    Have questions or want to reach out? Fill out the form and our team will get back to you as soon as possible.
                                 </p>
                             </div>
                             <h4><i class="fa fa-map-marker"></i>123 E Shop, Los Angeles, CA, USA</h4>
